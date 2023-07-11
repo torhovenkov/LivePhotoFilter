@@ -29,32 +29,28 @@ struct FilterHandler {
         case .notSelected:
             return self.cgImage
         case .opacity:
-            currentFilter = MTIOpacityFilter()
+            currentFilter = getConfiguredOpacityFilter()
         case .colorInvert:
             currentFilter = MTIColorInvertFilter()
         case .contrast:
-            currentFilter = MTIContrastFilter()
+            currentFilter = getConfiguredContrastFilter()
         }
         let context = try! MTIContext(device: MTLCreateSystemDefaultDevice()!)
-        if let currentFilter = currentFilter as? MTIOpacityFilter {
-            currentFilter.opacity = 0.5
-            currentFilter.inputImage = mtImage
-            guard let output = currentFilter.outputImage else { return self.cgImage}
-            let cgImage = try! context.makeCGImage(from: output)
-            return cgImage
-        }
-        if let currentFilter = currentFilter as? MTIContrastFilter {
-            currentFilter.contrast = 0.5
-            currentFilter.inputImage = mtImage
-            guard let output = currentFilter.outputImage else { return self.cgImage}
-            let cgImage = try! context.makeCGImage(from: output)
-            return cgImage
-        }
         currentFilter.inputImage = mtImage
         guard let output = currentFilter.outputImage else { return self.cgImage}
-       
         let cgImage = try! context.makeCGImage(from: output)
         return cgImage
+    }
+    
+    private func getConfiguredOpacityFilter() -> MTIOpacityFilter {
+        let filter = MTIOpacityFilter()
+        filter.opacity = 0.5
+        return filter
+    }
+    private func getConfiguredContrastFilter() -> MTIContrastFilter {
+        let filter = MTIContrastFilter()
+        filter.contrast = 1.5
+        return filter
     }
     
 }
