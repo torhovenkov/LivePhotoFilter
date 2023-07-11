@@ -10,12 +10,14 @@ import CoreImage
 
 class FrameHandler: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     @Published var frame: CGImage?
-    @Published var filterType: FilterType?
+    @Published var filterType: FilterType
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private let context = CIContext()
     
+    
     override init() {
+        self.filterType = FilterType.notSelected
         super.init()
         Task {
             await self.setUpCaptureSession()
@@ -59,10 +61,20 @@ class FrameHandler: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let cgImage = imageFromSampleBuffer(sampleBuffer) else { return }
-        
-        DispatchQueue.main.async { [unowned self] in
-            self.frame = cgImage
+        if self.filterType == .notSelected {
+            DispatchQueue.main.async { [unowned self] in
+                self.frame = cgImage
+            }
+        } else {
+            let filterHandler = FilterHandler(cgImage: cgImage, filterType: self.filterType)
+            let filteredCGImage = filterHandler.filteredImage
+            DispatchQueue.main.async { [unowned self] in
+                self.frame = filteredCGImage
+            }
         }
+        
+    
+        
     }
     
     func imageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> CGImage? {
@@ -71,10 +83,6 @@ class FrameHandler: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBu
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         
         return cgImage
-    }
-    
-    enum FilterType {
-        
     }
     
 }

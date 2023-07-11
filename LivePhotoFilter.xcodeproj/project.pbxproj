@@ -15,6 +15,7 @@
 		A24CE66D2A5CFA640031C45D /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A24CE66C2A5CFA640031C45D /* Metal.framework */; };
 		A24CE6712A5D00980031C45D /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24CE6702A5D00980031C45D /* CameraPreview.swift */; };
 		A24CE6732A5D24170031C45D /* FrameHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24CE6722A5D24170031C45D /* FrameHandler.swift */; };
+		A24CE6752A5D34CE0031C45D /* FilterHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24CE6742A5D34CE0031C45D /* FilterHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		A24CE66C2A5CFA640031C45D /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		A24CE6702A5D00980031C45D /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
 		A24CE6722A5D24170031C45D /* FrameHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameHandler.swift; sourceTree = "<group>"; };
+		A24CE6742A5D34CE0031C45D /* FilterHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterHandler.swift; sourceTree = "<group>"; };
 		B868B21AA432DAA08B0FA996 /* Pods-LivePhotoFilter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivePhotoFilter.debug.xcconfig"; path = "Target Support Files/Pods-LivePhotoFilter/Pods-LivePhotoFilter.debug.xcconfig"; sourceTree = "<group>"; };
 		FE72DC07B19C58A1AFE47B3F /* Pods-LivePhotoFilter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LivePhotoFilter.release.xcconfig"; path = "Target Support Files/Pods-LivePhotoFilter/Pods-LivePhotoFilter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +89,7 @@
 				A24CE6602A5CF8CD0031C45D /* ContentView.swift */,
 				A24CE6702A5D00980031C45D /* CameraPreview.swift */,
 				A24CE6722A5D24170031C45D /* FrameHandler.swift */,
+				A24CE6742A5D34CE0031C45D /* FilterHandler.swift */,
 				A24CE6622A5CF8CF0031C45D /* Assets.xcassets */,
 				A24CE6642A5CF8CF0031C45D /* Preview Content */,
 			);
@@ -217,6 +220,7 @@
 			files = (
 				A24CE6712A5D00980031C45D /* CameraPreview.swift in Sources */,
 				A24CE6612A5CF8CD0031C45D /* ContentView.swift in Sources */,
+				A24CE6752A5D34CE0031C45D /* FilterHandler.swift in Sources */,
 				A24CE6732A5D24170031C45D /* FrameHandler.swift in Sources */,
 				A24CE65F2A5CF8CD0031C45D /* LivePhotoFilterApp.swift in Sources */,
 			);

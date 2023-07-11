@@ -13,8 +13,17 @@ struct ContentView: View {
     @StateObject private var frameHandler = FrameHandler()
     
     var body: some View {
-        CameraPreview(image: frameHandler.frame)
-        
+        VStack{
+            CameraPreview(image: frameHandler.frame)
+            Picker("Choose filter", selection: $frameHandler.filterType) {
+                ForEach(FilterType.allCases) { type in
+                    Text(String(describing: type))
+                }
+            }
+            .pickerStyle(.segmented)
+            .frame(height: 50)
+            .padding(.horizontal)
+        }
     }
 }
 

@@ -14,18 +14,20 @@ struct CameraPreview: View {
     private var label = Text("frame")
     
     var body: some View {
-        if let image = image {
-            Image(image, scale: 1.0,orientation: .up, label: label).resizable()
-                
-        } else {
-            Color.black
-                .ignoresSafeArea()
-        }
+            if let image = image {
+                Image(image, scale: 1.0,orientation: .up, label: label).resizable()
+                    
+            } else {
+                Color.black
+                    .ignoresSafeArea()
+            }
+
     }
-    
     init(image: CGImage? = nil) {
         self.image = image
     }
+
+
 }
 
 struct CameraPreview_Previews: PreviewProvider {
