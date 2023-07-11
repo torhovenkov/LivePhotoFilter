@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
+import AVFoundation
+import MetalPetal
 
 struct ContentView: View {
+    @StateObject private var frameHandler = FrameHandler()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        CameraPreview(image: frameHandler.frame)
+        
     }
 }
 
